@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const db_config = require('./config/db');
 
 // Импортируем роуты.
 const product = require('./routes/product.route'); 
@@ -9,8 +10,7 @@ const app = express();
 
 // Устанавливаем соединение между mongoose и mongodb.
 const mongoose = require('mongoose');
-let dev_db_url = 'mongodb://a.volkov:.gb.gb30@ds129914.mlab.com:29914/frontweek';
-const mongoDB = process.env.MONGODB_URI || dev_db_url;
+const mongoDB = process.env.MONGODB_URI || db_config.url;
 mongoose.connect(mongoDB, { useNewUrlParser: true }); 
 mongoose.Promise = global.Promise;
 const db = mongoose.connection;
@@ -19,15 +19,14 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 // Устанавливаем ???.
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
+
 // Покдключаем роуты.
 app.use('/products', product);
 
 let port = 1234;
-
 app.listen(port, () => {
-        console.log('Server is running on port ' + port)
-    }
-);
+    console.log('Server is running on port ' + port)
+});
 
 
 
