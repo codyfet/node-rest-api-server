@@ -19,7 +19,7 @@ router.get('/', product_controller.product_all_details);
 router.get('/:id', product_controller.product_details);
 
 /**
- * Изменить апись по id.
+ * Изменить запись по id.
  */
 router.put('/:id/update', product_controller.product_update);
 

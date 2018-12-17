@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const db_config = require('./config/db');
+const db_config = require('../config/db');
 
 // Импортируем роуты.
 const product = require('./routes/product.route'); 
@@ -27,6 +27,3 @@ let port = 1234;
 app.listen(port, () => {
     console.log('Server is running on port ' + port)
 });
-
-
-
