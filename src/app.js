@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 const db_config = require('../config/db');
 
 // Импортируем роуты.
@@ -16,12 +17,13 @@ mongoose.Promise = global.Promise;
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
-// Устанавливаем ???.
+// Устанавливаем middleware обработчики.
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
+app.use(cors());
 
 // Покдключаем роуты.
-app.use('/products', product);
+app.use('/product', product);
 
 let port = 1234;
 app.listen(port, () => {
