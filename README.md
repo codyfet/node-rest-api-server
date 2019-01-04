@@ -1,9 +1,11 @@
-# node-rest-api
+# node-rest-api-server
 Пример простейшего CRUD rest-api на NodeJS + Mongoose.
 
 Для запуска выполнить:
 
 ```
+npm install 
+
 npm run dev
 ```
 
