@@ -14,6 +14,20 @@ MLAB сгенерирует строку для подключения к MongoD
 
 Пример содержит CRUD реализацию для одной референсной сущности product:
 
+Схема product имеет вид: 
+```
+const ProductSchema = new Schema({
+    name: {
+        type: String,
+        reuired: true
+    },
+    price: {
+        type: Number,
+        required: true
+    }
+});
+```
+
 | Method | Endpoints           | Notes              |
 | ------ | ------------------- | ------------------ |
 | POST   | /product/create     | Add product        |
